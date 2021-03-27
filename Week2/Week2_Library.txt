@@ -1,0 +1,237 @@
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\Akshay>cd ../..
+
+C:\>cd Program Files
+
+C:\Program Files>cd apache-cassandra-3.11.10-bin
+
+C:\Program Files\apache-cassandra-3.11.10-bin>cd apache-cassandra-3.11.10
+
+C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10>cd bin
+
+C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin>cqlsh
+
+WARNING: console codepage must be set to cp65001 to support utf-8 encoding on Windows platforms.
+If you experience encoding problems, change your console codepage with 'chcp 65001' before starting cqlsh.
+
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.10 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+WARNING: pyreadline dependency missing.  Install to enable tab completion.
+cqlsh> create keyspace library with replication = { 'class' : 'SimpleStrategy' , 'replication_factor' : 1 };
+cqlsh> describe keyspaces;
+
+system_schema  system   system_distributed  system_traces
+system_auth    library  employee
+
+cqlsh> USE library;
+cqlsh:library> CREATE TABLE library_info ( stud_id int PRIMARY KEY, counter_value counter, stud_name text, book_id int, book_name text, date_of_issue timestamp );
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> CREATE TABLE library_info ( counter_value counter, stud_id int PRIMARY KEY, stud_name text, book_id int, book_name text, date_of_issue timestamp );
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> CREATE TABLE library_info ( counter_value counter, stud_id int PRIMARY KEY, stud_name varchar, book_id int, book_name varchar, date_of_issue timestamp );
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> CREATE TABLE library_info ( counter_value counter, stud_id varchar PRIMARY KEY, stud_name varchar, book_id varchar, book_name varchar, date_of_issue timestamp );
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> CREATE TABLE library_info ( counter_value counter, stud_id varchar PRIMARY KEY, stud_name varchar, book_id varchar, book_name varchar, date_of_issue varchar );
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> CREATE TABLE library_info ( stud_id int, counter_value counter, stud_name text, book_id int, book_name text, date_of_issue timestamp, PRIMARY KEY = stud_id );
+SyntaxException: line 1:146 mismatched input '=' expecting '(' (... date_of_issue timestamp, PRIMARY KEY [=]...)
+cqlsh:library> CREATE TABLE library_info ( stud_id int, counter_value counter, stud_name text, book_id int, book_name text, date_of_issue timestamp, PRIMARY KEY (stud_id) );
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> CREATE TABLE library_info ( stud_id int, counter_value counter, stud_name text, book_id int, book_name text, date_of_issue timestamp, PRIMARY KEY (stud_id, stud_name, book_id, book_name, date_of_issue) );
+cqlsh:library> BEGIN BATCH
+           ... ;
+           ... APPLY BATCH;
+SyntaxException: line 2:0 mismatched input ';' expecting K_APPLY (BEGIN BATCH[;]...)
+cqlsh:library> UPDATE library_info set counter_value = counter_value + 1 where stud_id = 112 and stud_name = 'Ramesh' and date_of_issue = '2021-02-23' and book_id = 1235 and book_name = 'BDA';
+cqlsh:library> select * from library_info;
+
+ stud_id | stud_name | book_id | book_name | date_of_issue                   | counter_value
+---------+-----------+---------+-----------+---------------------------------+---------------
+     112 |    Ramesh |    1235 |       BDA | 2021-02-22 18:30:00.000000+0000 |             1
+
+(1 rows)
+cqlsh:library> UPDATE library_info set counter_value = counter_value + 1 where stud_id = 122 and stud_name = 'Rama' and date_of_issue = '2021-02-13' and book_id = 1345 and book_name = 'RPA';
+cqlsh:library> UPDATE library_info set counter_value = counter_value + 1 where stud_id = 132 and stud_name = 'Raj' and date_of_issue = '2021-03-13' and book_id = 1455 and book_name = 'CNS';
+cqlsh:library> UPDATE library_info set counter_value = counter_value + 1 where stud_id = 112 and stud_name = 'Ramesh' and date_of_issue = '2021-03-23' and book_id = 1235 and book_name = 'BDA';
+cqlsh:library> select * from library_info;
+
+ stud_id | stud_name | book_id | book_name | date_of_issue                   | counter_value
+---------+-----------+---------+-----------+---------------------------------+---------------
+     132 |       Raj |    1455 |       CNS | 2021-03-12 18:30:00.000000+0000 |             1
+     122 |      Rama |    1345 |       RPA | 2021-02-12 18:30:00.000000+0000 |             1
+     112 |    Ramesh |    1235 |       BDA | 2021-02-22 18:30:00.000000+0000 |             1
+     112 |    Ramesh |    1235 |       BDA | 2021-03-22 18:30:00.000000+0000 |             1
+
+(4 rows)
+cqlsh:library> UPDATE library_info set counter_value = counter_value + 1 where stud_id = 112 and stud_name = 'Ramesh' and date_of_issue = '2021-02-23' and book_id = 1235 and book_name = 'BDA';
+cqlsh:library> select * from library_info;
+
+ stud_id | stud_name | book_id | book_name | date_of_issue                   | counter_value
+---------+-----------+---------+-----------+---------------------------------+---------------
+     132 |       Raj |    1455 |       CNS | 2021-03-12 18:30:00.000000+0000 |             1
+     122 |      Rama |    1345 |       RPA | 2021-02-12 18:30:00.000000+0000 |             1
+     112 |    Ramesh |    1235 |       BDA | 2021-02-22 18:30:00.000000+0000 |             2
+     112 |    Ramesh |    1235 |       BDA | 2021-03-22 18:30:00.000000+0000 |             1
+
+(4 rows)
+cqlsh:library> delete from library_info where date_of_issue = '2021-03-22';
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Some partition key parts are missing: stud_id"
+cqlsh:library> delete from library_info where date_of_issue = '2021-02-22' AND stud_id = 112 AND book_id = 1235 AND book_name = 'BDA';
+InvalidRequest: Error from server: code=2200 [Invalid query] message="PRIMARY KEY column "book_id" cannot be restricted as preceding column "stud_name" is not restricted"
+cqlsh:library> delete from library_info where date_of_issue = '2021-02-22' AND stud_id = 112 AND book_id = 1235 AND book_name = 'BDA' AND stud_name = 'Ramesh';
+cqlsh:library> select * from library_info;
+
+ stud_id | stud_name | book_id | book_name | date_of_issue                   | counter_value
+---------+-----------+---------+-----------+---------------------------------+---------------
+     132 |       Raj |    1455 |       CNS | 2021-03-12 18:30:00.000000+0000 |             1
+     122 |      Rama |    1345 |       RPA | 2021-02-12 18:30:00.000000+0000 |             1
+     112 |    Ramesh |    1235 |       BDA | 2021-02-22 18:30:00.000000+0000 |             2
+     112 |    Ramesh |    1235 |       BDA | 2021-03-22 18:30:00.000000+0000 |             1
+
+(4 rows)
+cqlsh:library> COPY library_info (stud_id, stud_name, book_id, book_name, date_of_issue, counter_value) TO 'F:\library_info.csv';
+Using 7 child processes
+
+Starting copy of library.library_info with columns [stud_id, stud_name, book_id, book_name, date_of_issue, counter_value].
+Processed: 4 rows; Rate:       3 rows/s; Avg. rate:       1 rows/s
+4 rows exported to 1 files in 3.256 seconds.
+cqlsh:library> COPY library_info (stud_id, stud_name, book_id, book_name, date_of_issue, counter_value) FROM 'F:\library_info.csv';
+Using 7 child processes
+
+Starting copy of library.library_info with columns [stud_id, stud_name, book_id, book_name, date_of_issue, counter_value].
+PPProcess ImportProcess-9:     1 rows/s; Avg. rate:       1 rows/s
+rocess ImportProcess-10:
+Process ImportProcess-11:
+PTrocess ImportProcess-8:
+TTrocess ImportProcess-12:
+PPraceback (most recent call last):
+T raceback (most recent call last):
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+rocess ImportProcess-13:
+rocess ImportProcess-14:
+TTT   File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+raceback (most recent call last):
+raceback (most recent call last):
+raceback (most recent call last):
+raceback (most recent call last):
+     raceback (most recent call last):
+   self.run()
+  File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+   self.run()
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+    File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+  File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+    self.run()
+    self.run()
+   self.run()
+      self.run()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+     self.close()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+    self.run()
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+    self.close()
+     self.close()
+     self.close()
+    self.close()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2330, in run
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+   self.close()
+          self._session.cluster.shutdown()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+   self._session.cluster.shutdown()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+    self._session.cluster.shutdown()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+     self.close()
+     File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+   self._session.cluster.shutdown()
+   self._session.cluster.shutdown()
+   self._session.cluster.shutdown()
+     self.control_connection.shutdown()
+     self.control_connection.shutdown()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\pylib\cqlshlib\copyutil.py", line 2334, in close
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+       File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+   self.control_connection.shutdown()
+   self.control_connection.shutdown()
+   self._session.cluster.shutdown()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+   self.control_connection.shutdown()
+   self.control_connection.shutdown()
+    File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+     self._connection.close()
+   self._connection.close()
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+   File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+   File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+    self._connection.close()
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+     self._connection.close()
+   self._connection.close()
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+    self._connection.close()
+   File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+    self.control_connection.shutdown()
+   File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+     AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+   AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+      AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+    AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+    self._connection.close()
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+    AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+      AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+     cls._loop.add_timer(timer)
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+A  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ ttributeError: 'NoneType' object has no attribute 'add_timer'
+   cls._loop.add_timer(timer)
+     cls._loop.add_timer(timer)
+    cls._loop.add_timer(timer)
+AA   cls._loop.add_timer(timer)
+A   cls._loop.add_timer(timer)
+ File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+ AttributeError: 'NoneType' object has no attribute 'add_timer'
+AttributeError: 'NoneType' object has no attribute 'add_timer'
+   AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+  File "C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+    cls._loop.add_timer(timer)
+AttributeError: 'NoneType' object has no attribute 'add_timer'
+Processed: 3 rows; Rate:       1 rows/s; Avg. rate:       1 rows/s
+3 rows imported from 1 files in 3.182 seconds (0 skipped).
+cqlsh:library> select * from library_info;
+
+ stud_id | stud_name | book_id | book_name | date_of_issue                   | counter_value
+---------+-----------+---------+-----------+---------------------------------+---------------
+     132 |       Raj |    1455 |       CNS | 2021-03-12 18:30:00.000000+0000 |             2
+     122 |      Rama |    1345 |       RPA | 2021-02-12 18:30:00.000000+0000 |             2
+     112 |    Ramesh |    1235 |       BDA | 2021-02-22 18:30:00.000000+0000 |             4
+     112 |    Ramesh |    1235 |       BDA | 2021-03-22 18:30:00.000000+0000 |             1
+
+(4 rows)
+cqlsh:library>

@@ -1,0 +1,180 @@
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\Akshay>cd ../..
+
+C:\>cd Program Files
+
+C:\Program Files>cd apache-cassandra-3.11.10-bin
+
+C:\Program Files\apache-cassandra-3.11.10-bin>cd apache-cassandra-3.11.10
+
+C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10>cd bin
+
+C:\Program Files\apache-cassandra-3.11.10-bin\apache-cassandra-3.11.10\bin>cqlsh
+
+WARNING: console codepage must be set to cp65001 to support utf-8 encoding on Windows platforms.
+If you experience encoding problems, change your console codepage with 'chcp 65001' before starting cqlsh.
+
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.10 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+WARNING: pyreadline dependency missing.  Install to enable tab completion.
+cqlsh> create keyspace employee with replication = { 'class' : 'SimpleStrategy' , 'replication_factor' : 1 };
+cqlsh> describe keyspaces;
+
+system_schema  system_auth  system  system_distributed  employee  system_traces
+
+cqlsh> use employee
+   ... ;
+cqlsh:employee> CREATE TABLE employee_info ( emp_id int PRIMARY KEY, emp_name text, designation text, date_of_joining timestamp, salary int, dept_name_text );
+SyntaxException: line 1:140 no viable alternative at input ')' (...timestamp, salary int, dept_name_text [)]...)
+cqlsh:employee> CREATE TABLE employee_info ( emp_id int PRIMARY KEY, emp_name text, designation text, date_of_joining timestamp, salary int, dept_name text );
+cqlsh:employee> DESCRIBE TABLE employee_info;
+
+CREATE TABLE employee.employee_info (
+    emp_id int PRIMARY KEY,
+    date_of_joining timestamp,
+    dept_name text,
+    designation text,
+    emp_name text,
+    salary int
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+
+cqlsh:employee> BEGIN BATCH
+            ... INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1267, 'Raj Malhotra', 'Senior Supervisor', '2014-02-27', 135000, 'Marketing')
+            ... INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1334, 'Shweta Bharadwaj', 'Assistant Manager', '2017-07-17', 85000, 'Sales')
+            ... INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1455, 'Amrita Dewan', 'Supervisor', '2016-03-22', 105000, 'HR')
+            ... INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1254, 'Girish Rao', 'Manager', '2018-12-07', 95000, 'Marketing')
+            ... INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1455, 'Akash Singh', 'Supervisor', '2016-11-12', 105000, 'Technical Design')
+            ... APPLY BATCH;
+cqlsh:employee> select * from employee_info;
+
+ emp_id | date_of_joining                 | dept_name        | designation       | emp_name         | salary
+--------+---------------------------------+------------------+-------------------+------------------+--------
+   1334 | 2017-07-16 18:30:00.000000+0000 |            Sales | Assistant Manager | Shweta Bharadwaj |  85000
+   1455 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |     Amrita Dewan | 105000
+   1254 | 2018-12-06 18:30:00.000000+0000 |        Marketing |           Manager |       Girish Rao |  95000
+   1267 | 2014-02-26 18:30:00.000000+0000 |        Marketing | Senior Supervisor |     Raj Malhotra | 135000
+
+(4 rows)
+cqlsh:employee> INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1543, 'Girish Rao', 'Manager', '2018-12-07', 95000, 'Marketing');
+cqlsh:employee> select * from employee_info;
+
+ emp_id | date_of_joining                 | dept_name        | designation       | emp_name         | salary
+--------+---------------------------------+------------------+-------------------+------------------+--------
+   1334 | 2017-07-16 18:30:00.000000+0000 |            Sales | Assistant Manager | Shweta Bharadwaj |  85000
+   1455 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |     Amrita Dewan | 105000
+   1254 | 2018-12-06 18:30:00.000000+0000 |        Marketing |           Manager |       Girish Rao |  95000
+   1543 | 2018-12-06 18:30:00.000000+0000 |        Marketing |           Manager |       Girish Rao |  95000
+   1267 | 2014-02-26 18:30:00.000000+0000 |        Marketing | Senior Supervisor |     Raj Malhotra | 135000
+
+(5 rows)
+cqlsh:employee> INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1543, 'Akash Singh', 'Supervisor', '2016-11-12', 105000, 'Technical Design');
+cqlsh:employee> select * from employee_info;
+
+ emp_id | date_of_joining                 | dept_name        | designation       | emp_name         | salary
+--------+---------------------------------+------------------+-------------------+------------------+--------
+   1334 | 2017-07-16 18:30:00.000000+0000 |            Sales | Assistant Manager | Shweta Bharadwaj |  85000
+   1455 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |     Amrita Dewan | 105000
+   1254 | 2018-12-06 18:30:00.000000+0000 |        Marketing |           Manager |       Girish Rao |  95000
+   1543 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |      Akash Singh | 105000
+   1267 | 2014-02-26 18:30:00.000000+0000 |        Marketing | Senior Supervisor |     Raj Malhotra | 135000
+
+(5 rows)
+cqlsh:employee> UPDATE employee_info SET emp_name = 'Rakesh Mehra' and dept_name = 'Testing' where emp_id = 1254;
+SyntaxException: line 1:51 mismatched input 'and' expecting K_WHERE (...employee_info SET emp_name = 'Rakesh Mehra' [and]...)
+cqlsh:employee> UPDATE employee_info SET emp_name = 'Rakesh Mehra', dept_name = 'Testing' where emp_id = 1254;
+cqlsh:employee> select * from employee_info;
+
+ emp_id | date_of_joining                 | dept_name        | designation       | emp_name         | salary
+--------+---------------------------------+------------------+-------------------+------------------+--------
+   1334 | 2017-07-16 18:30:00.000000+0000 |            Sales | Assistant Manager | Shweta Bharadwaj |  85000
+   1455 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |     Amrita Dewan | 105000
+   1254 | 2018-12-06 18:30:00.000000+0000 |          Testing |           Manager |     Rakesh Mehra |  95000
+   1543 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |      Akash Singh | 105000
+   1267 | 2014-02-26 18:30:00.000000+0000 |        Marketing | Senior Supervisor |     Raj Malhotra | 135000
+
+(5 rows)
+cqlsh:employee> UPDATE employee_info SET dept_name = 'HR' where emp_id = 1455;
+cqlsh:employee> select * from employee_info;
+
+ emp_id | date_of_joining                 | dept_name        | designation       | emp_name         | salary
+--------+---------------------------------+------------------+-------------------+------------------+--------
+   1334 | 2017-07-16 18:30:00.000000+0000 |            Sales | Assistant Manager | Shweta Bharadwaj |  85000
+   1455 | 2016-11-11 18:30:00.000000+0000 |               HR |        Supervisor |     Amrita Dewan | 105000
+   1254 | 2018-12-06 18:30:00.000000+0000 |          Testing |           Manager |     Rakesh Mehra |  95000
+   1543 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |      Akash Singh | 105000
+   1267 | 2014-02-26 18:30:00.000000+0000 |        Marketing | Senior Supervisor |     Raj Malhotra | 135000
+
+(5 rows)
+cqlsh:employee> select * from employee_info ORDER BY salary;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> CREATE INDEX on employee_info(salary);
+cqlsh:employee> select * from employee_info ORDER BY salary;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> select * from employee_info ORDER BY salary ASC;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> select * from employee_info WHERE emp_id IN (1334,1455,1254,1543,1267) ORDER BY salary ASC;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Order by is currently only supported on the clustered columns of the PRIMARY KEY, got salary"
+cqlsh:employee> ALTER TABLE employee_info ADD projects set<text>;
+cqlsh:employee> UPDATE employee_info SET projects = projects + {} WHERE emp_id = 1334;
+cqlsh:employee> UPDATE employee_info SET projects = projects + {'Department Mixer'} WHERE emp_id = 1455;
+cqlsh:employee> UPDATE employee_info SET projects = projects + {'Testing Automation Project', 'Automation Project to store Test Results'} WHERE emp_id = 1254;
+cqlsh:employee> UPDATE employee_info SET projects = projects + {'UI Design Course', 'Design Helper Software'} WHERE emp_id = 1543;
+cqlsh:employee> UPDATE employee_info SET projects = projects + {'Time Automated Posting on Social Media'} WHERE emp_id = 1267;
+cqlsh:employee> select * from employee_info;
+
+ emp_id | date_of_joining                 | dept_name        | designation       | emp_name         | projects                                                                   | salary
+--------+---------------------------------+------------------+-------------------+------------------+----------------------------------------------------------------------------+--------
+   1334 | 2017-07-16 18:30:00.000000+0000 |            Sales | Assistant Manager | Shweta Bharadwaj |                                                                       null |  85000
+   1455 | 2016-11-11 18:30:00.000000+0000 |               HR |        Supervisor |     Amrita Dewan |                                                       {'Department Mixer'} | 105000
+   1254 | 2018-12-06 18:30:00.000000+0000 |          Testing |           Manager |     Rakesh Mehra | {'Automation Project to store Test Results', 'Testing Automation Project'} |  95000
+   1543 | 2016-11-11 18:30:00.000000+0000 | Technical Design |        Supervisor |      Akash Singh |                             {'Design Helper Software', 'UI Design Course'} | 105000
+   1267 | 2014-02-26 18:30:00.000000+0000 |        Marketing | Senior Supervisor |     Raj Malhotra |                                 {'Time Automated Posting on Social Media'} | 135000
+
+(5 rows)
+cqlsh:employee> INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... ;
+SyntaxException: line 2:0 mismatched input ';' expecting K_VALUES (... date_of_joining, salary, dept_name)[;])
+cqlsh:employee> ALTER TABLE employee_info MODIFY salary int PRIMARY KEY;
+SyntaxException: line 1:26 no viable alternative at input 'MODIFY' (ALTER TABLE [employee_info] MODIFY...)
+cqlsh:employee> ALTER TABLE employee_info ALTER salary int PRIMARY KEY;
+SyntaxException: line 1:39 mismatched input 'int' expecting K_TYPE (ALTER TABLE employee_info ALTER salary [int]...)
+cqlsh:employee> INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1643, 'Akhil Singh', 'Supervisor', '2016-11-12', 105000, 'Technical Design') using TTL 15;
+cqlsh:employee> select ttl(dept_name) from employee_info where emp_id = 1643;
+
+ ttl(dept_name)
+----------------
+
+(0 rows)
+cqlsh:employee> INSERT INTO employee_info (emp_id, emp_name, designation, date_of_joining, salary, dept_name)
+            ... VALUES (1643, 'Akhil Singh', 'Supervisor', '2016-11-12', 105000, 'Technical Design') using TTL 15;
+cqlsh:employee> select ttl(dept_name) from employee_info where emp_id = 1643;
+
+ ttl(dept_name)
+----------------
+             13
+
+(1 rows)
