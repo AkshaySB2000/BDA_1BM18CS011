@@ -1,0 +1,1 @@
+mongoexport --db=student --collection=studentinfo --type=csv --fields=rollno,age,contactno,emailid --out=C:\Users\Akshay\Documents\studentinfo.csv
