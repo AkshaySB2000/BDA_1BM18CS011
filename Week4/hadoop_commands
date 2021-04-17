@@ -1,0 +1,444 @@
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ ls -lrt
+total 112
+-rwxr-xr-x 1 hdoop hdoop 1982 Sep 10  2019 workers.sh
+-rwxr-xr-x 1 hdoop hdoop 2166 Sep 10  2019 stop-all.sh
+-rwxr-xr-x 1 hdoop hdoop 1770 Sep 10  2019 stop-all.cmd
+-rwxr-xr-x 1 hdoop hdoop 2221 Sep 10  2019 start-all.sh
+-rwxr-xr-x 1 hdoop hdoop 1779 Sep 10  2019 start-all.cmd
+-rwxr-xr-x 1 hdoop hdoop 2522 Sep 10  2019 hadoop-daemons.sh
+-rwxr-xr-x 1 hdoop hdoop 1983 Sep 10  2019 hadoop-daemon.sh
+-rwxr-xr-x 1 hdoop hdoop 1500 Sep 10  2019 kms.sh
+-rwxr-xr-x 1 hdoop hdoop 1756 Sep 10  2019 stop-secure-dns.sh
+-rwxr-xr-x 1 hdoop hdoop 3898 Sep 10  2019 stop-dfs.sh
+-rwxr-xr-x 1 hdoop hdoop 1455 Sep 10  2019 stop-dfs.cmd
+-rwxr-xr-x 1 hdoop hdoop 1783 Sep 10  2019 stop-balancer.sh
+-rwxr-xr-x 1 hdoop hdoop 1793 Sep 10  2019 start-secure-dns.sh
+-rwxr-xr-x 1 hdoop hdoop 5170 Sep 10  2019 start-dfs.sh
+-rwxr-xr-x 1 hdoop hdoop 1401 Sep 10  2019 start-dfs.cmd
+-rwxr-xr-x 1 hdoop hdoop 1880 Sep 10  2019 start-balancer.sh
+-rwxr-xr-x 1 hdoop hdoop 2086 Sep 10  2019 refresh-namenodes.sh
+-rwxr-xr-x 1 hdoop hdoop 2756 Sep 10  2019 distribute-exclude.sh
+-rwxr-xr-x 1 hdoop hdoop 1542 Sep 10  2019 httpfs.sh
+-rwxr-xr-x 1 hdoop hdoop 2328 Sep 10  2019 yarn-daemons.sh
+-rwxr-xr-x 1 hdoop hdoop 1814 Sep 10  2019 yarn-daemon.sh
+-rwxr-xr-x 1 hdoop hdoop 3083 Sep 10  2019 stop-yarn.sh
+-rwxr-xr-x 1 hdoop hdoop 1642 Sep 10  2019 stop-yarn.cmd
+-rwxr-xr-x 1 hdoop hdoop 3342 Sep 10  2019 start-yarn.sh
+-rwxr-xr-x 1 hdoop hdoop 1571 Sep 10  2019 start-yarn.cmd
+drwxr-xr-x 4 hdoop hdoop 4096 Sep 10  2019 FederationStateStore
+-rwxr-xr-x 1 hdoop hdoop 1841 Sep 10  2019 mr-jobhistory-daemon.sh
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ ./start-dfs.sh
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [akshaysb-vm]
+akshaysb-vm: Warning: Permanently added 'akshaysb-vm' (ECDSA) to the list of known hosts.
+2021-04-17 12:19:24,341 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ ./start-yarn.sh
+Starting resourcemanager
+Starting nodemanagers
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ jps
+10384 DataNode
+10595 SecondaryNameNode
+11283 Jps
+10796 ResourceManager
+10252 NameNode
+10956 NodeManager
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -ls /
+2021-04-17 12:20:48,132 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -put /home/akshay.txt /
+2021-04-17 12:22:35,879 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+put: `/home/akshay.txt': No such file or directory
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -put /aksaysb/akshay.txt /
+2021-04-17 12:23:13,272 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+put: `/aksaysb/akshay.txt': No such file or directory
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -put /home/aksaysb/akshay.txt /
+2021-04-17 12:23:25,210 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+put: `/home/aksaysb/akshay.txt': No such file or directory
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -put /home/akshaysb/akshay.txt /
+2021-04-17 12:32:44,264 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-17 12:32:45,537 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -ls /
+2021-04-17 12:33:12,618 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 1 items
+-rw-r--r--   1 hdoop supergroup        154 2021-04-17 12:32 /akshay.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ Hadoop fs -ls /
+Hadoop: command not found
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdoop fs -ls /
+hdoop: command not found
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs –mkdir /akshay
+2021-04-17 12:55:37,240 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+–mkdir: Unknown command
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-v] [-x] <path> ...]
+	[-expunge [-immediate]]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-head <file>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] [-s <sleep interval>] <file>]
+	[-test -[defswrz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touch [-a] [-m] [-t TIMESTAMP ] [-c] <path> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -mkdir /akshay
+2021-04-17 12:56:31,520 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -ls /
+2021-04-17 12:56:47,203 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+drwxr-xr-x   - hdoop supergroup          0 2021-04-17 12:56 /akshay
+-rw-r--r--   1 hdoop supergroup        154 2021-04-17 12:32 /akshay.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -moveFromLocal /home/akshaysb/alpha.txt /
+2021-04-17 12:58:54,394 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-17 12:58:55,328 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+moveFromLocal: remove `/home/akshaysb/alpha.txt': Input/output error
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -ls /
+2021-04-17 12:59:03,179 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 3 items
+drwxr-xr-x   - hdoop supergroup          0 2021-04-17 12:56 /akshay
+-rw-r--r--   1 hdoop supergroup        154 2021-04-17 12:32 /akshay.txt
+-rw-r--r--   1 hdoop supergroup         52 2021-04-17 12:58 /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -moveToLocal /alpha.txt /home/akshaysb
+2021-04-17 12:59:58,225 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+moveToLocal: Option '-moveToLocal' is not implemented yet.
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ ls
+distribute-exclude.sh  hadoop-daemons.sh  mr-jobhistory-daemon.sh  start-all.sh       start-dfs.sh         start-yarn.sh  stop-balancer.sh  stop-secure-dns.sh  workers.sh
+FederationStateStore   httpfs.sh          refresh-namenodes.sh     start-balancer.sh  start-secure-dns.sh  stop-all.cmd   stop-dfs.cmd      stop-yarn.cmd       yarn-daemon.sh
+hadoop-daemon.sh       kms.sh             start-all.cmd            start-dfs.cmd      start-yarn.cmd       stop-all.sh    stop-dfs.sh       stop-yarn.sh        yarn-daemons.sh
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -ls /
+2021-04-17 13:00:26,095 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 3 items
+drwxr-xr-x   - hdoop supergroup          0 2021-04-17 12:56 /akshay
+-rw-r--r--   1 hdoop supergroup        154 2021-04-17 12:32 /akshay.txt
+-rw-r--r--   1 hdoop supergroup         52 2021-04-17 12:58 /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -tail /akshay.txt
+2021-04-17 13:02:24,862 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-17 13:02:25,625 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+My name is Akshay S Bharadwaj.
+I study in BMSCE.
+I'm currently in 5th sem computer science and engineering.
+I live in Bengaluru.
+I love computer science.
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs –rm /alpha.txt
+2021-04-17 13:04:13,368 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+–rm: Unknown command
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-v] [-x] <path> ...]
+	[-expunge [-immediate]]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-head <file>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] [-s <sleep interval>] <file>]
+	[-test -[defswrz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touch [-a] [-m] [-t TIMESTAMP ] [-c] <path> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs –rm /alpha.txt
+2021-04-17 13:05:19,735 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+–rm: Unknown command
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-v] [-x] <path> ...]
+	[-expunge [-immediate]]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-head <file>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] [-s <sleep interval>] <file>]
+	[-test -[defswrz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touch [-a] [-m] [-t TIMESTAMP ] [-c] <path> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -ls
+2021-04-17 13:06:17,571 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+ls: `.': No such file or directory
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -ls /
+2021-04-17 13:06:25,215 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 3 items
+drwxr-xr-x   - hdoop supergroup          0 2021-04-17 12:56 /akshay
+-rw-r--r--   1 hdoop supergroup        154 2021-04-17 12:32 /akshay.txt
+-rw-r--r--   1 hdoop supergroup         52 2021-04-17 12:58 /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -rm /akshay.txt
+2021-04-17 13:06:41,386 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Deleted /akshay.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -expunge
+2021-04-17 13:07:10,785 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -chown akshaysb /akshay
+2021-04-17 13:08:20,986 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -ls /
+2021-04-17 13:08:26,309 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+drwxr-xr-x   - akshaysb supergroup          0 2021-04-17 12:56 /akshay
+-rw-r--r--   1 hdoop    supergroup         52 2021-04-17 12:58 /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -chgrp newgroup /alpha.txt
+2021-04-17 13:09:13,164 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -ls /
+2021-04-17 13:09:22,360 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+drwxr-xr-x   - akshaysb supergroup          0 2021-04-17 12:56 /akshay
+-rw-r--r--   1 hdoop    newgroup           52 2021-04-17 12:58 /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -setrep 2 /alpha.txt
+2021-04-17 13:10:41,962 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Replication 2 set: /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs –du –s /alpha.txt^C
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -put /home/akshaysb/akshay.txt /
+2021-04-17 13:12:02,052 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-17 13:12:02,733 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -put /home/akshaysb/akshay1.txt /akshay
+2021-04-17 13:13:46,092 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-17 13:13:47,077 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -ls /alpha.txt
+2021-04-17 13:14:30,747 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+-rw-r--r--   2 hdoop newgroup         52 2021-04-17 12:58 /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -du -s /alpha.txt
+2021-04-17 13:14:46,960 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+52  104  /alpha.txt
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -df
+2021-04-17 13:15:25,602 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Filesystem                     Size   Used    Available  Use%
+hdfs://localhost:9000  104620580864  45386  86830440448    0%
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs / -files
+2021-04-17 13:16:09,758 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+/: Unknown command
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-v] [-x] <path> ...]
+	[-expunge [-immediate]]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-head <file>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] [-s <sleep interval>] <file>]
+	[-test -[defswrz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touch [-a] [-m] [-t TIMESTAMP ] [-c] <path> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fsck / -files
+WARNING: Use of this script to execute fsck is deprecated.
+WARNING: Attempting to execute replacement "hdfs fsck" instead.
+
+2021-04-17 13:16:23,474 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Connecting to namenode via http://localhost:9870/fsck?ugi=hdoop&files=1&path=%2F
+FSCK started by hdoop (auth:SIMPLE) from /127.0.0.1 for path / at Sat Apr 17 13:16:24 IST 2021
+/ <dir>
+/akshay <dir>
+/akshay/akshay1.txt 154 bytes, replicated: replication=1, 1 block(s):  OK
+/akshay.txt 154 bytes, replicated: replication=1, 1 block(s):  OK
+/alpha.txt 52 bytes, replicated: replication=2, 1 block(s):  Under replicated BP-992504418-127.0.1.1-1618641816320:blk_1073741826_1002. Target Replicas is 2 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+
+Status: HEALTHY
+ Number of data-nodes:	1
+ Number of racks:		1
+ Total dirs:			2
+ Total symlinks:		0
+
+Replicated Blocks:
+ Total size:	360 B
+ Total files:	3
+ Total blocks (validated):	3 (avg. block size 120 B)
+ Minimally replicated blocks:	3 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	1 (33.333332 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	1
+ Average block replication:	1.0
+ Missing blocks:		0
+ Corrupt blocks:		0
+ Missing replicas:		1 (25.0 %)
+
+Erasure Coded Block Groups:
+ Total size:	0 B
+ Total files:	0
+ Total block groups (validated):	0
+ Minimally erasure-coded block groups:	0
+ Over-erasure-coded block groups:	0
+ Under-erasure-coded block groups:	0
+ Unsatisfactory placement block groups:	0
+ Average block group size:	0.0
+ Missing block groups:		0
+ Corrupt block groups:		0
+ Missing internal blocks:	0
+FSCK ended at Sat Apr 17 13:16:24 IST 2021 in 14 milliseconds
+
+
+The filesystem under path '/' is HEALTHY
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ cd ../..
+hdoop@akshaysb-vm:~$ su - akshaysb
+Password: 
+akshaysb@akshaysb-vm:~$ 
+
+
