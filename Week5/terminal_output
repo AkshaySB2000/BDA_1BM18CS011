@@ -1,0 +1,342 @@
+akshaysb@akshaysb-vm:~$ su - hdoop
+Password: 
+-bash: export: `HADOOP_OPTS-Djava.library.path=/home/hdoop/hadoop-3.2.1/lib/nativ': not a valid identifier
+hdoop@akshaysb-vm:~$ hdfs namenode startnode
+2021-04-24 11:29:18,077 INFO namenode.NameNode: STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = akshaysb-vm/127.0.1.1
+STARTUP_MSG:   args = [startnode]
+STARTUP_MSG:   version = 3.2.1
+STARTUP_MSG:   classpath = /home/hdoop/hadoop-3.2.1/etc/hadoop:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-core-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-io-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-security-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-mapper-asl-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/j2objc-annotations-1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-math3-3.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-util-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/failureaccess-1.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-codec-1.11.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jul-to-slf4j-1.7.25.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-server-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/asm-5.0.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-lang3-3.7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/httpcore-4.4.10.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/stax2-api-3.1.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/hadoop-auth-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-logging-1.1.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/audience-annotations-0.5.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jsp-api-2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-annotations-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jersey-core-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/dnsjava-2.1.7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jsr311-api-1.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-server-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/protobuf-java-2.5.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/json-smart-2.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-jaxrs-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jersey-server-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-net-3.6.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-collections-3.2.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jaxb-api-2.2.11.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jsr305-3.0.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-beanutils-1.9.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/error_prone_annotations-2.2.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-client-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/guava-27.0-jre.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/curator-framework-2.13.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-text-1.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-webapp-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerby-pkix-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jettison-1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-servlet-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-simplekdc-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/curator-recipes-2.13.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/netty-3.10.5.Final.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jersey-servlet-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/gson-2.2.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/snappy-java-1.0.5.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/metrics-core-3.2.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/avro-1.7.7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/slf4j-api-1.7.25.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-io-2.5.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/curator-client-2.13.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/checker-qual-2.5.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-cli-1.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-core-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerby-config-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/token-provider-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/javax.servlet-api-3.1.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-databind-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerby-xdr-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-admin-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/re2j-1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/hadoop-annotations-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/animal-sniffer-annotations-1.17.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jaxb-impl-2.2.3-1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/htrace-core4-4.1.0-incubating.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-core-asl-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jersey-json-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/httpclient-4.5.6.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jcip-annotations-1.0-1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/log4j-1.2.17.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/nimbus-jose-jwt-4.41.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-identity-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/paranamer-2.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-common-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/woodstox-core-5.0.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jackson-xc-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-crypto-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-compress-1.18.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-http-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jsch-0.1.54.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerb-util-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/jetty-xml-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/commons-configuration2-2.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/zookeeper-3.4.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/accessors-smart-1.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerby-util-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/kerby-asn1-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/hadoop-common-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/hadoop-nfs-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/hadoop-kms-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/common/hadoop-common-3.2.1-tests.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-core-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-io-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-security-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-mapper-asl-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/j2objc-annotations-1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-math3-3.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-util-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/failureaccess-1.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-daemon-1.0.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-codec-1.11.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-server-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/asm-5.0.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-lang3-3.7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/httpcore-4.4.10.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/stax2-api-3.1.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/hadoop-auth-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-logging-1.1.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/audience-annotations-0.5.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-annotations-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/leveldbjni-all-1.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jersey-core-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/dnsjava-2.1.7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jsr311-api-1.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-server-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/protobuf-java-2.5.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/json-smart-2.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-jaxrs-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jersey-server-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-net-3.6.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-collections-3.2.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jaxb-api-2.2.11.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jsr305-3.0.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-beanutils-1.9.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/okio-1.6.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/error_prone_annotations-2.2.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-client-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/guava-27.0-jre.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/curator-framework-2.13.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-text-1.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/okhttp-2.7.5.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-webapp-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerby-pkix-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jettison-1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-servlet-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-simplekdc-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/curator-recipes-2.13.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/netty-3.10.5.Final.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jersey-servlet-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/gson-2.2.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/snappy-java-1.0.5.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/avro-1.7.7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-io-2.5.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/curator-client-2.13.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/checker-qual-2.5.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-cli-1.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-core-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerby-config-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/token-provider-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/javax.servlet-api-3.1.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-databind-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerby-xdr-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-admin-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/re2j-1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-util-ajax-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/json-simple-1.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/hadoop-annotations-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/animal-sniffer-annotations-1.17.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jaxb-impl-2.2.3-1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/htrace-core4-4.1.0-incubating.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-core-asl-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jersey-json-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/httpclient-4.5.6.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jcip-annotations-1.0-1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/log4j-1.2.17.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/nimbus-jose-jwt-4.41.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-identity-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/paranamer-2.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/netty-all-4.0.52.Final.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-common-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/woodstox-core-5.0.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jackson-xc-1.9.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-crypto-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-compress-1.18.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-http-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jsch-0.1.54.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerb-util-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/jetty-xml-9.3.24.v20180605.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/commons-configuration2-2.1.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/zookeeper-3.4.13.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/accessors-smart-1.2.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerby-util-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/lib/kerby-asn1-1.0.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-native-client-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-nfs-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-client-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-rbf-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-httpfs-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-3.2.1-tests.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-native-client-3.2.1-tests.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-client-3.2.1-tests.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/hdfs/hadoop-hdfs-rbf-3.2.1-tests.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/lib/junit-4.11.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/lib/hamcrest-core-1.3.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-plugins-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-common-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-app-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.2.1-tests.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-nativetask-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-client-uploader-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/java-util-1.9.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/guice-4.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/jackson-jaxrs-base-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/bcprov-jdk15on-1.60.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/snakeyaml-1.16.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/geronimo-jcache_1.0_spec-1.0-alpha-1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/jersey-guice-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/fst-2.50.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/aopalliance-1.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/javax.inject-1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/swagger-annotations-1.5.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/mssql-jdbc-6.2.1.jre7.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/jackson-jaxrs-json-provider-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/json-io-2.5.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/HikariCP-java7-2.4.12.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/metrics-core-3.2.4.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/guice-servlet-4.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/ehcache-3.3.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/objenesis-1.0.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/jersey-client-1.19.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/jackson-module-jaxb-annotations-2.9.8.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/lib/bcpkix-jdk15on-1.60.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-submarine-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-common-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-sharedcachemanager-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-tests-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-router-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-applicationhistoryservice-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-client-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-services-core-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-services-api-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-timeline-pluginstorage-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-api-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-applications-unmanaged-am-launcher-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-nodemanager-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-web-proxy-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-resourcemanager-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-server-common-3.2.1.jar:/home/hdoop/hadoop-3.2.1/share/hadoop/yarn/hadoop-yarn-registry-3.2.1.jar
+STARTUP_MSG:   build = https://gitbox.apache.org/repos/asf/hadoop.git -r b3cbbb467e22ea829b3808f4b7b01d07e0bf3842; compiled by 'rohithsharmaks' on 2019-09-10T15:56Z
+STARTUP_MSG:   java = 1.8.0_282
+************************************************************/
+2021-04-24 11:29:18,177 INFO namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]
+2021-04-24 11:29:18,979 INFO namenode.NameNode: createNameNode [startnode]
+Usage: hdfs namenode [-backup] | 
+	[-checkpoint] | 
+	[-format [-clusterid cid ] [-force] [-nonInteractive] ] | 
+	[-upgrade [-clusterid cid] [-renameReserved<k-v pairs>] ] | 
+	[-upgradeOnly [-clusterid cid] [-renameReserved<k-v pairs>] ] | 
+	[-rollback] | 
+	[-rollingUpgrade <rollback|started> ] | 
+	[-importCheckpoint] | 
+	[-initializeSharedEdits] | 
+	[-bootstrapStandby [-force] [-nonInteractive] [-skipSharedEditsCheck] ] | 
+	[-recover [ -force] ] | 
+	[-metadataVersion ]
+
+2021-04-24 11:29:19,185 INFO namenode.NameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at akshaysb-vm/127.0.1.1
+************************************************************/
+hdoop@akshaysb-vm:~$ hdfs -format
+/home/hdoop/hadoop-3.2.1/libexec/hadoop-functions.sh: line 2366: HDFS_-FORMAT_USER: invalid variable name
+ERROR: -format is not COMMAND nor fully qualified CLASSNAME.
+Usage: hdfs [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]
+
+  OPTIONS is none or any of:
+
+--buildpaths                       attempt to add class files from build tree
+--config dir                       Hadoop config directory
+--daemon (start|status|stop)       operate on a daemon
+--debug                            turn on shell script debug mode
+--help                             usage information
+--hostnames list[,of,host,names]   hosts to use in worker mode
+--hosts filename                   list of hosts to use in worker mode
+--loglevel level                   set the log4j level for this command
+--workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+cacheadmin           configure the HDFS cache
+crypto               configure HDFS encryption zones
+debug                run a Debug Admin to execute HDFS debug commands
+dfsadmin             run a DFS admin client
+dfsrouteradmin       manage Router-based federation
+ec                   run a HDFS ErasureCoding CLI
+fsck                 run a DFS filesystem checking utility
+haadmin              run a DFS HA admin client
+jmxget               get JMX exported values from NameNode or DataNode.
+oev                  apply the offline edits viewer to an edits file
+oiv                  apply the offline fsimage viewer to an fsimage
+oiv_legacy           apply the offline fsimage viewer to a legacy fsimage
+storagepolicies      list/get/set/satisfyStoragePolicy block storage policies
+
+    Client Commands:
+
+classpath            prints the class path needed to get the hadoop jar and
+                     the required libraries
+dfs                  run a filesystem command on the file system
+envvars              display computed Hadoop environment variables
+fetchdt              fetch a delegation token from the NameNode
+getconf              get config values from configuration
+groups               get the groups which users belong to
+lsSnapshottableDir   list all snapshottable dirs owned by the current user
+snapshotDiff         diff two snapshots of a directory or diff the current
+                     directory contents with a snapshot
+version              print the version
+
+    Daemon Commands:
+
+balancer             run a cluster balancing utility
+datanode             run a DFS datanode
+dfsrouter            run the DFS router
+diskbalancer         Distributes data evenly among disks on a given node
+httpfs               run HttpFS server, the HDFS HTTP Gateway
+journalnode          run the DFS journalnode
+mover                run a utility to move block replicas across storage
+                     types
+namenode             run the DFS namenode
+nfs3                 run an NFS version 3 gateway
+portmap              run a portmap service
+secondarynamenode    run the DFS secondary namenode
+sps                  run external storagepolicysatisfier
+zkfc                 run the ZK Failover Controller daemon
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.
+hdoop@akshaysb-vm:~$ cd hdoop-3.2.1/sbin
+-bash: cd: hdoop-3.2.1/sbin: No such file or directory
+hdoop@akshaysb-vm:~$ cd hadoop-3.2.1/sbin
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ start-dfs
+start-dfs: command not found
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ start -dfs
+
+Command 'start' not found, did you mean:
+
+  command 'stars' from snap stars (2.7jrc3)
+  command 'startx' from deb xinit (1.4.1-0ubuntu2)
+  command 'stat' from deb coreutils (8.30-3ubuntu2)
+  command 'rstart' from deb x11-session-utils (7.7+4)
+  command 'tart' from deb tart (3.10-1build1)
+
+See 'snap info <snapname>' for additional versions.
+
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ ./start-dfs.sh
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [akshaysb-vm]
+2021-04-24 11:35:44,281 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ ./start-yarn.sh
+Starting resourcemanager
+Starting nodemanagers
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ jps
+3717 SecondaryNameNode
+3399 NameNode
+3992 ResourceManager
+4427 Jps
+4125 NodeManager
+3535 DataNode
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hdfs dfs -mkdir input
+2021-04-24 11:36:48,803 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+mkdir: `hdfs://localhost:9000/user/hdoop': No such file or directory
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ hadoop fs -mkdir /akshay
+2021-04-24 11:37:52,882 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+mkdir: `/akshay': File exists
+hdoop@akshaysb-vm:~/hadoop-3.2.1/sbin$ cd ..
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop fs -mkdir /input_dir
+2021-04-24 11:39:02,839 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop fs -ls /
+2021-04-24 11:39:12,829 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 4 items
+drwxr-xr-x   - akshaysb supergroup          0 2021-04-17 13:13 /akshay
+-rw-r--r--   1 hdoop    supergroup        154 2021-04-17 13:12 /akshay.txt
+-rw-r--r--   2 hdoop    newgroup           52 2021-04-17 12:58 /alpha.txt
+drwxr-xr-x   - hdoop    supergroup          0 2021-04-24 11:39 /input_dir
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop fs -put /home/akshaysb/input_text.txt /input_dir
+2021-04-24 11:41:41,217 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+put: `/home/akshaysb/input_text.txt': No such file or directory
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop fs -ls /input_dir
+2021-04-24 11:41:55,906 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop fs -put /home/akshaysb/input_text /input_dir
+2021-04-24 11:43:11,039 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-24 11:43:13,206 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop fs -ls /input_dir
+2021-04-24 11:43:18,684 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 1 items
+-rw-r--r--   1 hdoop supergroup         44 2021-04-24 11:43 /input_dir/input_text
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hdfs -cat /input_dir/input_text
+/home/hdoop/hadoop-3.2.1/libexec/hadoop-functions.sh: line 2366: HDFS_-CAT_USER: invalid variable name
+ERROR: -cat is not COMMAND nor fully qualified CLASSNAME.
+Usage: hdfs [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]
+
+  OPTIONS is none or any of:
+
+--buildpaths                       attempt to add class files from build tree
+--config dir                       Hadoop config directory
+--daemon (start|status|stop)       operate on a daemon
+--debug                            turn on shell script debug mode
+--help                             usage information
+--hostnames list[,of,host,names]   hosts to use in worker mode
+--hosts filename                   list of hosts to use in worker mode
+--loglevel level                   set the log4j level for this command
+--workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+cacheadmin           configure the HDFS cache
+crypto               configure HDFS encryption zones
+debug                run a Debug Admin to execute HDFS debug commands
+dfsadmin             run a DFS admin client
+dfsrouteradmin       manage Router-based federation
+ec                   run a HDFS ErasureCoding CLI
+fsck                 run a DFS filesystem checking utility
+haadmin              run a DFS HA admin client
+jmxget               get JMX exported values from NameNode or DataNode.
+oev                  apply the offline edits viewer to an edits file
+oiv                  apply the offline fsimage viewer to an fsimage
+oiv_legacy           apply the offline fsimage viewer to a legacy fsimage
+storagepolicies      list/get/set/satisfyStoragePolicy block storage policies
+
+    Client Commands:
+
+classpath            prints the class path needed to get the hadoop jar and the required
+                     libraries
+dfs                  run a filesystem command on the file system
+envvars              display computed Hadoop environment variables
+fetchdt              fetch a delegation token from the NameNode
+getconf              get config values from configuration
+groups               get the groups which users belong to
+lsSnapshottableDir   list all snapshottable dirs owned by the current user
+snapshotDiff         diff two snapshots of a directory or diff the current directory
+                     contents with a snapshot
+version              print the version
+
+    Daemon Commands:
+
+balancer             run a cluster balancing utility
+datanode             run a DFS datanode
+dfsrouter            run the DFS router
+diskbalancer         Distributes data evenly among disks on a given node
+httpfs               run HttpFS server, the HDFS HTTP Gateway
+journalnode          run the DFS journalnode
+mover                run a utility to move block replicas across storage types
+namenode             run the DFS namenode
+nfs3                 run an NFS version 3 gateway
+portmap              run a portmap service
+secondarynamenode    run the DFS secondary namenode
+sps                  run external storagepolicysatisfier
+zkfc                 run the ZK Failover Controller daemon
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop dfs -cat /input_dir/input_text
+WARNING: Use of this script to execute dfs is deprecated.
+WARNING: Attempting to execute replacement "hdfs dfs" instead.
+
+2021-04-24 11:52:08,927 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-24 11:52:12,326 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+I am Akshay S Bharadwaj.
+I am 20 years old.
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hdfs dfs -cat /input_dir/input_text
+2021-04-24 11:52:23,482 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-24 11:52:25,601 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+I am Akshay S Bharadwaj.
+I am 20 years old.
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop jar /home/akshaysb/Downloads/WordCount.jar /input_dir/output_dir
+JAR does not exist or is not a normal file: /home/akshaysb/Downloads/WordCount.jar
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop jar /home/akshaysb/Downloads/WordCount.jar /input_dir/output_dir
+JAR does not exist or is not a normal file: /home/akshaysb/Downloads/WordCount.jar
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop jar /home/akshaysb/Downloads/MapReduceClient.jar wordcount /input_dir/output_dir
+Usage: wordcount <in> [<in>...] <out>
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hadoop jar /home/akshaysb/Downloads/MapReduceClient.jar wordcount /input_dir /output_dir
+2021-04-24 12:00:01,740 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-24 12:00:04,970 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-04-24 12:00:08,073 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1619244370493_0001
+2021-04-24 12:00:08,685 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-04-24 12:00:09,740 INFO input.FileInputFormat: Total input files to process : 1
+2021-04-24 12:00:09,898 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-04-24 12:00:10,024 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-04-24 12:00:10,497 INFO mapreduce.JobSubmitter: number of splits:1
+2021-04-24 12:00:11,247 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-04-24 12:00:11,774 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1619244370493_0001
+2021-04-24 12:00:11,774 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-04-24 12:00:12,550 INFO conf.Configuration: resource-types.xml not found
+2021-04-24 12:00:12,551 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-04-24 12:00:16,793 INFO impl.YarnClientImpl: Submitted application application_1619244370493_0001
+2021-04-24 12:00:17,426 INFO mapreduce.Job: The url to track the job: http://akshaysb-vm:8088/proxy/application_1619244370493_0001/
+2021-04-24 12:00:17,471 INFO mapreduce.Job: Running job: job_1619244370493_0001
+2021-04-24 12:01:38,485 INFO mapreduce.Job: Job job_1619244370493_0001 running in uber mode : false
+2021-04-24 12:01:39,049 INFO mapreduce.Job:  map 0% reduce 0%
+2021-04-24 12:02:20,442 INFO mapreduce.Job:  map 100% reduce 0%
+2021-04-24 12:02:44,184 INFO mapreduce.Job:  map 100% reduce 100%
+2021-04-24 12:02:46,261 INFO mapreduce.Job: Job job_1619244370493_0001 completed successfully
+2021-04-24 12:02:50,113 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=93
+		FILE: Number of bytes written=451487
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=151
+		HDFS: Number of bytes written=55
+		HDFS: Number of read operations=8
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=31430
+		Total time spent by all reduces in occupied slots (ms)=20166
+		Total time spent by all map tasks (ms)=31430
+		Total time spent by all reduce tasks (ms)=20166
+		Total vcore-milliseconds taken by all map tasks=31430
+		Total vcore-milliseconds taken by all reduce tasks=20166
+		Total megabyte-milliseconds taken by all map tasks=32184320
+		Total megabyte-milliseconds taken by all reduce tasks=20649984
+	Map-Reduce Framework
+		Map input records=2
+		Map output records=10
+		Map output bytes=84
+		Map output materialized bytes=93
+		Input split bytes=107
+		Combine input records=10
+		Combine output records=8
+		Reduce input groups=8
+		Reduce shuffle bytes=93
+		Reduce input records=8
+		Reduce output records=8
+		Spilled Records=16
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=965
+		CPU time spent (ms)=3640
+		Physical memory (bytes) snapshot=442421248
+		Virtual memory (bytes) snapshot=5058916352
+		Total committed heap usage (bytes)=361758720
+		Peak Map Physical memory (bytes)=261918720
+		Peak Map Virtual memory (bytes)=2526175232
+		Peak Reduce Physical memory (bytes)=180502528
+		Peak Reduce Virtual memory (bytes)=2532741120
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=44
+	File Output Format Counters 
+		Bytes Written=55
+hdoop@akshaysb-vm:~/hadoop-3.2.1$ hdfs dfs -cat /output_dir/*
+2021-04-24 12:04:37,704 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-04-24 12:04:41,745 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+20	1
+Akshay	1
+Bharadwaj.	1
+I	2
+S	1
+am	2
+old.	1
+years	1
+
