@@ -1,0 +1,19 @@
+cd hadoop-3.2.1/sbin
+
+./start-dfs.sh
+
+./start-yarn.sh
+
+jps
+
+hdfs dfs -ls /
+
+hdfs dfs -mkdir /input_dir
+
+hdfs dfs -ls /
+
+hadoop fs -put /home/akshaysb/Downloads/akshay.txt /input_dir
+
+hadoop jar /home/akshaysb/Downloads/sort.jar samples.topn.TopN /input_dir/akshay.txt /output_dir
+
+hdfs dfs -cat /output_dir/*
