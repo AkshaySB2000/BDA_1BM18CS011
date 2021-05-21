@@ -1,0 +1,21 @@
+cd hadoop-3.2.1/sbin
+
+./start-dfs.sh
+
+./start-yarn.sh
+
+jps
+
+hdfs dfs -ls /
+
+hdfs dfs -mkdir /temp_dir
+
+hdfs dfs -ls /
+
+hadoop fs -put /home/akshaysb/Downloads/weather_dataset /input_dir
+
+hadoop jar /home/akshaysb/Downloads/avgtemp.jar temp.AverageDriver /temp_dir/weather_dataset /temp_outputdir
+
+hdfs dfs -ls /temp_outputdir
+
+hdfs dfs -cat /temp_outputdir/part-r-00000
