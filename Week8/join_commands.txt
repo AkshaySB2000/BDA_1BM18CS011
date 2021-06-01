@@ -1,0 +1,27 @@
+cd hadoop-3.2.1/sbin
+
+./start-dfs.sh
+
+./start-yarn.sh
+
+jps
+
+hdfs dfs -ls /
+
+hdfs dfs -mkdir /input_join
+
+hdfs dfs -ls /
+
+hadoop fs -put /home/akshaysb/bda_programs/Week8/DeptEmpStrength.txt /input_join
+
+hadoop fs -put /home/akshaysb/bda_programs/Week8/DeptStrength.txt /input_join
+
+hadoop fs -put /home/akshaysb/bda_programs/Week8/DeptName.txt /input_join
+
+hdfs dfs -ls /input_join
+
+hadoop jar /home/akshaysb/bda_programs/Week8/EmployeeJoin/EmployeeJoin.jar MapReduceJoin/JoinDriver /input_join/DeptEmpStrength.txt /input_join/DeptName.txt /output_join
+
+hdfs dfs -ls /output_join
+
+hdfs dfs -cat /output_join/part-r-00000
