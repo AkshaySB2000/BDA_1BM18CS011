@@ -1,0 +1,12 @@
+Run as administrator
+./spark-shell.sh
+ssh-keygen -t dsa
+CD %USERPROFILE%\
+CD .SSH
+cat id_dsa.pub
+cat id_dsa >> authorized_keys
+cd path:\spark\sbin
+./start-all.sh
+open browser and type localhost:8080
+Open new terminal C:\spark\bin\spark-class.sh org.apache.spark.deploy.master.Master
+Open new terminal spark-class.sh org.apache.spark.deploy.worker.Worker spark://192.168.1.3:7077(copy from browser)
